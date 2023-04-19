@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Sim {
     
     String name;
@@ -44,6 +46,7 @@ public class Sim {
     System.out.println("6. Have shower");
     System.out.println("7. Have fun");
     System.out.println("S. Check Skill levels");
+    System.out.println("L. Learn new skills");
     }
 
     public void checkNeeds() {
@@ -77,5 +80,10 @@ public class Sim {
         Sim newCharacter = new Sim("Sim");
         System.out.println("Hello, " + newCharacter.name);
         newCharacter.mainMenu();
+        Scanner in = new Scanner(System.in);
+        String userChoice = in.nextLine();
+        if (userChoice.equals("1")) {
+            newCharacter.checkNeeds();
+        }
     }
 }
