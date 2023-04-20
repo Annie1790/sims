@@ -3,37 +3,24 @@ import java.util.Scanner;
 public class Sim {
     
     String name;
-    int hunger;
-    int bladder;
-    int energy;
-    int social;
-    int hygiene;
-    int fun;
 
-    int cooking;
-    int mechanical;
-    int fitness;
-    int logic;
-    int charisma;
-    int fishing;
-    int gardening;
+    Needs hunger = new Needs(10, "hunger");
+    Needs bladder = new Needs(10, "bladder");
+    Needs energy = new Needs(10, "energy");
+    Needs social = new Needs(10, "social");
+    Needs hygiene = new Needs(10, "hygiene");
+    Needs fun = new Needs(10, "fun");
+
+    Skills cooking = new Skills(0, "cooking");
+    Skills mechanical = new Skills(0, "mechanical");
+    Skills fitness = new Skills(0, "fitness");
+    Skills logic = new Skills(0, "logic");
+    Skills charisma = new Skills(0, "charisma");
+    Skills fishing = new Skills(0, "fishing");
+    Skills gardening = new Skills(0, "gardening");
 
     public Sim(String name) {
         this.name = name;
-        hunger = 10;
-        bladder = 10;
-        energy = 10;
-        social = 10;
-        hygiene = 10;
-        fun = 10;
-
-        cooking = 0;
-        mechanical = 0;
-        fitness = 0;
-        logic = 0;
-        charisma = 0;
-        fishing = 0;
-        gardening = 0;
     }
 
    public void mainMenu() {
@@ -45,35 +32,41 @@ public class Sim {
     System.out.println("5. Call friend");
     System.out.println("6. Have shower");
     System.out.println("7. Have fun");
-    System.out.println("S. Check Skill levels");
-    System.out.println("L. Learn new skills");
+    System.out.println("cs. Check Skill levels");
+    System.out.println("ls. Learn new skills");
     }
 
-    public void checkNeeds() {
-        System.out.println("hunger: " + hunger + "/10");
-        System.out.println("bladder: " + bladder + "/10");
-        System.out.println("energy: " + energy + "/10");
-        System.out.println("social: " + social + "/10");
-        System.out.println("hygiene: " + hygiene + "/10");
-        System.out.println("fun: " + fun + "/10");
-    }
+    public void chooseMainMenu(String option, Sim sim) {
+        switch(option) {
+            case "1": 
+            hunger.checkNeeds(hunger);
+            bladder.checkNeeds(bladder);
+            energy.checkNeeds(energy);
+            social.checkNeeds(social);
+            hygiene.checkNeeds(hygiene);
+            fun.checkNeeds(fun);   
+            break;
 
-    public void fillNeeds(int need) {
-        if (need == 10) {
-            need = 10;
-        } else {
-            need += 1;
+            // case "2": sim.fillNeeds(hunger);
+            // break;
+
+            // case "3": sim.fillNeeds(bladder);
+            // break;
+
+            // case "4": sim.fillNeeds(energy);
+            // break;
+
+            // case "5": sim.fillNeeds(social);
+            // break;
+
+            // case "6": sim.fillNeeds(hygiene);
+            // break;
+
+            // case "7": sim.fillNeeds(fun);
+            // break;
+
+            // case "ls":
         }
-    }
-
-    public void checkSkillLevels() {
-        System.out.println("cooking: " + cooking + "/10");
-        System.out.println("mechanical: " + mechanical + "/10");
-        System.out.println("fitness: " + fitness + "/10");
-        System.out.println("logic: " + logic + "/10");
-        System.out.println("charisma: " + charisma + "/10");
-        System.out.println("fishing: " + fishing + "/10");
-        System.out.println("gardening: " + gardening + "/10");
     }
 
     public static void main(String[] args) {
@@ -82,8 +75,6 @@ public class Sim {
         newCharacter.mainMenu();
         Scanner in = new Scanner(System.in);
         String userChoice = in.nextLine();
-        if (userChoice.equals("1")) {
-            newCharacter.checkNeeds();
-        }
+        newCharacter.chooseMainMenu(userChoice, newCharacter);
     }
 }
