@@ -1,3 +1,4 @@
+package Needs;
 public class Needs {
 
     protected int full;
@@ -9,16 +10,18 @@ public class Needs {
         this.name = name;
     }
 
-    public void checkNeeds(Needs needs) {
+    public void checkNeeds() {
         System.out.println(this.name + ": " + this.full + "/10");
     }
 
-    public void fillNeeds(int need) {
-        if (need == 10) {
-            need = 10;
+    public void fillNeeds() {
+        if (this.full == 10) {
+            this.full = 10;
+            System.out.println("Your bar is already full");
 
         } else {
-            need += 1;
+            this.full += 1;
+            System.out.println(this.name + "is now " + this.full + "/10");
         }
     }
 }
