@@ -21,6 +21,8 @@ public class Sim {
     final Skills fishing = new Skills(0, "fishing");
     final Skills gardening = new Skills(0, "gardening");
 
+    Needs[] needsArray = {hunger, bladder, energy, social, hygiene, fun};
+
     public Sim(String name) {
         this.name = name;
     }
@@ -70,6 +72,7 @@ public class Sim {
             switch (userChoice.toLowerCase()) {
                 case "1":
                     cooking.levelUp();
+                    Needs.loseNeedsPoints(needsArray);
                     break;
 
                 case "2":
@@ -116,27 +119,27 @@ public class Sim {
                 break;
 
             case "2":
-                hunger.fillNeeds();
+                hunger.fillNeeds(6);
                 break;
 
             case "3":
-                bladder.fillNeeds();
+                bladder.fillNeeds(10);
                 break;
 
             case "4":
-                energy.fillNeeds();
+                energy.fillNeeds(8);
                 break;
 
             case "5":
-                social.fillNeeds();
+                social.fillNeeds(5);
                 break;
 
             case "6":
-                hygiene.fillNeeds();
+                hygiene.fillNeeds(10);
                 break;
 
             case "7":
-                fun.fillNeeds();
+                fun.fillNeeds(4);
                 break;
 
             case "cs":
