@@ -1,10 +1,13 @@
 import java.util.Scanner;
 import Needs.*;
 import Skills.*;
+import Time.*;
 
 public class Sim {
 
     String name;
+
+    Time todayTime = new Time();
 
     final Needs hunger = new Needs(10, "hunger");
     final Needs bladder = new Needs(10, "bladder");
@@ -20,7 +23,7 @@ public class Sim {
     final Skills charisma = new Skills(0, "charisma");
     final Skills fishing = new Skills(0, "fishing");
     final Skills gardening = new Skills(0, "gardening");
-
+    //Wrapped in an array to use loseNeedsPoints method
     Needs[] needsArray = {hunger, bladder, energy, social, hygiene, fun};
 
     public Sim(String name) {
@@ -28,6 +31,7 @@ public class Sim {
     }
 
     public void mainMenu() {
+        System.out.println(todayTime.toString());
         System.out.println("\nChoose from the options below:");
         System.out.println("1. Check needs");
         System.out.println("2. Eat");
@@ -46,9 +50,8 @@ public class Sim {
         while (true) {
             this.mainMenu();
             String userChoice = in.nextLine();
-
             if (userChoice.equals("exit")) {
-                break;
+                System.exit(0);
             }
 
             this.chooseMainMenu(userChoice);
@@ -73,30 +76,43 @@ public class Sim {
                 case "1":
                     cooking.levelUp();
                     Needs.loseNeedsPoints(needsArray);
+                    todayTime.timeGoes();
                     break;
 
                 case "2":
                     mechanical.levelUp();
+                    Needs.loseNeedsPoints(needsArray);
+                    todayTime.timeGoes();
                     break;
 
                 case "3":
                     fitness.levelUp();
+                    Needs.loseNeedsPoints(needsArray);
+                    todayTime.timeGoes();
                     break;
 
                 case "4":
                     logic.levelUp();
+                    Needs.loseNeedsPoints(needsArray);
+                    todayTime.timeGoes();
                     break;
 
                 case "5":
                     charisma.levelUp();
+                    Needs.loseNeedsPoints(needsArray);
+                    todayTime.timeGoes();
                     break;
 
                 case "6":
                     fishing.levelUp();
+                    Needs.loseNeedsPoints(needsArray);
+                    todayTime.timeGoes();
                     break;
 
                 case "7":
                     gardening.levelUp();
+                    Needs.loseNeedsPoints(needsArray);
+                    todayTime.timeGoes();
                     break;
 
                 case "back":
@@ -155,12 +171,15 @@ public class Sim {
             case "ls":
                 this.chooseSkillToLearn();
                 break;
+
+            case "exit":
+                System.exit(0);
         }
     }
 
     public static void main(String[] args) {
         Sim newCharacter = new Sim("Sim");
-        System.out.println("Hello, " + newCharacter.name);
+        System.out.println("\nHello, " + newCharacter.name);
         newCharacter.startGame();
     }
 }
