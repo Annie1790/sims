@@ -26,7 +26,7 @@ public class Sim {
     }
 
     public void mainMenu() {
-        System.out.println("Choose from the options below:");
+        System.out.println("\nChoose from the options below:");
         System.out.println("1. Check needs");
         System.out.println("2. Eat");
         System.out.println("3. Use toilet");
@@ -39,21 +39,73 @@ public class Sim {
         System.out.println("exit. Exit the program");
     }
 
-    public void startGame(Sim sim) {
+    public void startGame() {
         Scanner in = new Scanner(System.in);
         while (true) {
-            sim.mainMenu();
+            this.mainMenu();
             String userChoice = in.nextLine();
+
             if (userChoice.equals("exit")) {
                 break;
             }
-            sim.chooseMainMenu(userChoice, sim);
-        }
 
+            this.chooseMainMenu(userChoice);
+        }
     }
 
-    public void chooseMainMenu(String option, Sim sim) {
-        switch (option) {
+    public void chooseSkillToLearn() {
+        Scanner in = new Scanner(System.in);
+        while (true) {
+            System.out.println("\nWhich skill would you like to learn?");
+            cooking.scanLearnSkill("1");
+            mechanical.scanLearnSkill("2");
+            fitness.scanLearnSkill("3");
+            logic.scanLearnSkill("4");
+            charisma.scanLearnSkill("5");
+            fishing.scanLearnSkill("6");
+            gardening.scanLearnSkill("7");
+            System.out.println("back: back to main menu");
+
+            String userChoice = in.nextLine();
+            switch (userChoice.toLowerCase()) {
+                case "1":
+                    cooking.levelUp();
+                    break;
+
+                case "2":
+                    mechanical.levelUp();
+                    break;
+
+                case "3":
+                    fitness.levelUp();
+                    break;
+
+                case "4":
+                    logic.levelUp();
+                    break;
+
+                case "5":
+                    charisma.levelUp();
+                    break;
+
+                case "6":
+                    fishing.levelUp();
+                    break;
+
+                case "7":
+                    gardening.levelUp();
+                    break;
+
+                case "back":
+                    this.startGame();
+                    break;
+            }
+
+        }
+    }
+
+    public void chooseMainMenu(String option) {
+        switch (option.toLowerCase()) {
             case "1":
                 hunger.checkNeeds();
                 bladder.checkNeeds();
@@ -96,12 +148,16 @@ public class Sim {
                 fishing.checkSkillLevel();
                 gardening.checkSkillLevel();
                 break;
+
+            case "ls":
+                this.chooseSkillToLearn();
+                break;
         }
     }
 
     public static void main(String[] args) {
         Sim newCharacter = new Sim("Sim");
         System.out.println("Hello, " + newCharacter.name);
-        newCharacter.startGame(newCharacter);
+        newCharacter.startGame();
     }
 }
