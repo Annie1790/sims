@@ -1,4 +1,4 @@
-package Time;
+package Chrono;
 
 public class Time {
     int time;
@@ -8,11 +8,15 @@ public class Time {
     }
 
     public void timeGoes() {
-        if (this.time <= 24) {
+        if (this.time >= 24) {
             this.time = 0;
+        } else {
+            this.time += 1;
         }
+    }
 
-        this.time += 1;
+    public int getTime() {
+        return this.time;
     }
 
     public String toString() {

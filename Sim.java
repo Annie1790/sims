@@ -1,7 +1,17 @@
 import java.util.Scanner;
+import Chrono.*;
 import Needs.*;
 import Skills.*;
-import Time.*;
+
+/*
+ A Java class can inherit fields and methods from another class.
+Each Java class requires its own file, but only one class in a Java package needs a main() method.
+Child classes inherit the parent constructor by default, but it’s possible to modify the constructor using super() or override it completely.
+You can use protected and final to control child class access to parent class members.
+Java’s OOP principle of polymorphism means you can use a child class object like a member of its parent class, but also give it its own traits.
+You can override parent class methods in the child class, ideally using the @Override keyword.
+It’s possible to use objects of different classes that share a parent class together in an array or ArrayList.* 
+ */
 
 public class Sim {
 
@@ -23,8 +33,8 @@ public class Sim {
     final Skills charisma = new Skills(0, "charisma");
     final Skills fishing = new Skills(0, "fishing");
     final Skills gardening = new Skills(0, "gardening");
-    //Wrapped in an array to use loseNeedsPoints method
-    Needs[] needsArray = {hunger, bladder, energy, social, hygiene, fun};
+    // Wrapped in an array to use loseNeedsPoints method
+    Needs[] needsArray = { hunger, bladder, energy, social, hygiene, fun };
 
     public Sim(String name) {
         this.name = name;
