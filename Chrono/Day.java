@@ -1,35 +1,24 @@
 package Chrono;
 
 public class Day {
-    String day;
-    Time todayTime = new Time();
-    
+    public String day;
+
     public Day(String day) {
         this.day = day;
-        todayTime.time = 0;
     }
 
-    public static void createDays() {
-        Day monday = new Day("monday");
-        Day tuesday = new Day("tuesday");
-        Day wednesday = new Day("wednesday");
-        Day thursday = new Day("thursday");
-        Day friday = new Day("friday");
-        Day saturday = new Day("saturday");
-        Day sunday = new Day("sunday");
+    // consts are Uppercase, naming convention
+    public static final Day MONDAY = new Day("Monday");
+    public static final Day TUESDAY = new Day("Tuesday");
+    public static final Day WEDNESDAY = new Day("Wednesday");
+    public static final Day THURSDAY = new Day("Thursday");
+    public static final Day FRIDAY = new Day("Friday");
+    public static final Day SATURDAY = new Day("Saturday");
+    public static final Day SUNDAY = new Day("Sunday");
 
-        Object[] weekArray = {monday, tuesday, wednesday, thursday, friday, saturday, sunday};
+    @Override
+    public String toString() {
+        return "\nThe day is " + this.day + ".";
     }
-
-    public static void loopThroughDays() {
-    }
-
-    public void goToNextDay() {
-        if (todayTime.time >= 24) {
-        }
-    }
-
-
-
 
 }

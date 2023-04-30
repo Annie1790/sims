@@ -17,7 +17,7 @@ public class Sim {
 
     String name;
 
-    Time todayTime = new Time();
+    Daytime today = new Daytime();
 
     final Needs hunger = new Needs(10, "hunger");
     final Needs bladder = new Needs(10, "bladder");
@@ -41,7 +41,7 @@ public class Sim {
     }
 
     public void mainMenu() {
-        System.out.println(todayTime.toString());
+        System.out.println(today.toString());
         System.out.println("\nChoose from the options below:");
         System.out.println("1. Check needs");
         System.out.println("2. Eat");
@@ -86,56 +86,56 @@ public class Sim {
                 case "1":
                     cooking.levelUp();
                     Needs.loseNeedsPoints(needsArray);
-                    todayTime.timeGoes();
+                    today.addHour();
                     break;
 
                 case "2":
                     mechanical.levelUp();
                     Needs.loseNeedsPoints(needsArray);
-                    todayTime.timeGoes();
+                    today.addHour();
                     break;
 
                 case "3":
                     fitness.levelUp();
                     Needs.loseNeedsPoints(needsArray);
-                    todayTime.timeGoes();
+                    today.addHour();
                     break;
 
                 case "4":
                     logic.levelUp();
                     Needs.loseNeedsPoints(needsArray);
-                    todayTime.timeGoes();
+                    today.addHour();
                     break;
 
                 case "5":
                     charisma.levelUp();
                     Needs.loseNeedsPoints(needsArray);
-                    todayTime.timeGoes();
+                    today.addHour();
                     break;
 
                 case "6":
                     fishing.levelUp();
                     Needs.loseNeedsPoints(needsArray);
-                    todayTime.timeGoes();
+                    today.addHour();
                     break;
 
                 case "7":
                     gardening.levelUp();
                     Needs.loseNeedsPoints(needsArray);
-                    todayTime.timeGoes();
+                    today.addHour();
                     break;
 
                 case "back":
                     this.startGame();
                     break;
             }
-
         }
     }
 
     public void chooseMainMenu(String option) {
         switch (option.toLowerCase()) {
             case "1":
+                System.out.println("\n");
                 hunger.checkNeeds();
                 bladder.checkNeeds();
                 energy.checkNeeds();
